@@ -23,7 +23,7 @@ For years, that single solution has been the missile batteries in Alaska and Cal
 user=''
 passw=''
 
-with open('cred.csv') as csvDataFile:
+with open('data/cred.csv') as csvDataFile:
     csvReader = csv.reader(csvDataFile)
     for row in csvReader:
         user = row[0]
