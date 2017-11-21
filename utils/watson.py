@@ -4,7 +4,7 @@
 import requests, csv
 from requests.auth import HTTPBasicAuth
 
-link = 'https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2017-09-21&text='
+# link = 'https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2017-09-21&text='
 
 #Example for testing
 urltext = '''
@@ -31,22 +31,27 @@ with open('data/cred.csv') as csvDataFile:
 
 #ret value
 # ret['tones'], ret['scores']
-def mainEmotion(url):
+def mainEmotion(text):
 	#url = url.decode(url)
-	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
-	content = content.json()
+	# content = requests.get(link+url, auth=HTTPBasicAuth(user, passw)).json()
+	dictionary = emotion(text)
 	#print content # prints dict
 	ret ={}
 	tonenames = []
 	tonescore = []
-	for each in content['document_tone']['tones']:
+	for each in dictionary['document_tone']['tones']:#this is a list Watson gives you
 		tonenames.append(each['tone_name'])
 		tonescore.append(each['score'])
-	ret['tones']=tonenames
-	ret['scores'] = tonescore
-	return ret
+	ret['tones']=tonenames # will look something like ["Sadness", "Anger"]
+	ret['scores'] = tonescore# will look something like [0.8271,0.213,0.6382]
+	return ret# will look something like {["Sadness", "Anger"], 0.8271,0.213,0.6382]}
 
-
+def textToLink(text):
+   return "https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2017-09-21&text=" + text.replace(" ", "%20")
+   
+def emotion(text):
+   text = requests.get(textToLink(text), auth=HTTPBasicAuth('9527d887-5a97-44d6-84a9-62eb0d0631a5','aCSkCFO0dZAi')).json()
+   return text
 
 
 '''

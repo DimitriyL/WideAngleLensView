@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    {% for article in articles %}
+        <h1><a href = "{{ article["webUrl"] }}">{{ article["webTitle"] }}</a></h1>
+        <h2>published at {{ article["webPublicationDate"] }}</h2>
+        <br>
+    {% endfor %}
+  </body>
+</html>
