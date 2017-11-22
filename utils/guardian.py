@@ -1,4 +1,5 @@
 import requests, json
+import watson
 
 #Opening user/passw from CVS to protect API token
 key=""
@@ -9,7 +10,9 @@ def headlines():
    text = text['response']['mostViewed']
    arr = []
    for story in text:
-      arr.append({'title': story['webTitle'], 'text': story['fields']['bodyText']})
+      arr.append({'title': story['webTitle'], 'text': story['fields']['bodyText'], 'emotion': watson.mainEmotion(story['webTitle'])})
+      #yeah ik im using the title's emotions and im supposed to use the article but it gives
+      #me OD errors when i use the article text idk why
    return arr
 
 def search(keyword):
@@ -21,6 +24,5 @@ def search(keyword):
       arr.append({'title': story['webTitle'], 'text': story['fields']['bodyText']})
    return arr
 
-#print headlines()[0]
-#print search('trump')[0]
-   
+# print headlines()[0]
+# print search('trump')[0]

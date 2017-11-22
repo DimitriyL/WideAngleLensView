@@ -4,9 +4,12 @@
   </head>
   <body>
     {% for article in articles %}
-        <h1><a href = "{{ article["webUrl"] }}">{{ article["webTitle"] }}</a></h1>
-        <h2>published at {{ article["webPublicationDate"] }}</h2>
-        <br>
+        <h1><!--<a href = "{{ article["webUrl"] }}">-->{{ article["title"] }}<!--</a>--></h1>
+        <!-- <h2>published at {{ article["webPublicationDate"] }}</h2> -->
+        {{ article["text"] }}
+        {% for feeling in article["emotion"]["tones"] %}
+          <h3>feelin' {{ feeling }} at {{ article["emotion"]["scores"][loop.index0] }}</h3>
+        {% endfor %}
     {% endfor %}
   </body>
 </html>
