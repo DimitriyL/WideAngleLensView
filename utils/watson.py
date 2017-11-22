@@ -17,7 +17,7 @@ In recent days the UK’s standing in the world has further diminished as the im
 user=''
 passw=''
 
-with open('cred.csv') as csvDataFile:
+with open('data/cred.csv') as csvDataFile:
     csvReader = csv.reader(csvDataFile)
     for row in csvReader:
         user = row[0]
