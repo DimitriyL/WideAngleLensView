@@ -1,2 +1,5 @@
 yiduoK -- 11-21-17 <13:43>
 Have the API's in the python files.
+
+yiduoK -- 11-22-17 <00:02>
+got it to display article titles' emotions (I don't know why it can't do whole texts of articles; errors)
