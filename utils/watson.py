@@ -43,16 +43,6 @@ def mainEmotion(url):
 	ret['scores'] = tonescore
 	return ret
 
-# output of sentEmotion is like this (you can access each sentence using the index)
-# [
-# 	{'text': u'I wanna die please kill me, but I also just aced my test!', 
-# 	'tones': {u'Sadness': 0.676962, u'Tentative': 0.716301}
-# 	}, 
-	
-# 	{'text': u'I got a Xiaomi phone for $90', 
-# 	'tones': {'Neutral': 0}
-# 	}
-# ]
 def sentEmotion(url):
 	url = sanatizeText(url)
 	ret =[]
