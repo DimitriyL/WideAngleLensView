@@ -17,7 +17,7 @@ In recent days the UK’s standing in the world has further diminished as the im
 user=''
 passw=''
 
-with open('data/cred.csv') as csvDataFile:
+with open('cred.csv') as csvDataFile:
     csvReader = csv.reader(csvDataFile)
     for row in csvReader:
         user = row[0]
@@ -43,44 +43,33 @@ def mainEmotion(url):
 	ret['scores'] = tonescore
 	return ret
 
-
-#returns a list, in order: text, emotion name, score
+# output of sentEmotion is like this (you can access each sentence using the index)
+# [
+# 	{'text': u'I wanna die please kill me, but I also just aced my test!', 
+# 	'tones': {u'Sadness': 0.676962, u'Tentative': 0.716301}
+# 	}, 
+	
+# 	{'text': u'I got a Xiaomi phone for $90', 
+# 	'tones': {'Neutral': 0}
+# 	}
+# ]
 def sentEmotion(url):
 	url = sanatizeText(url)
 	ret =[]
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
-	sentences = content['sentences_tone']
-	for each in sentences:
-		ret.append(each['text'])
-		if len(each['tones'])!=0:
-			ret.append(each['tones'][0]['tone_name'])
-			ret.append(each['tones'][0]['score'])
+	wanted = content["sentences_tone"]
+	for sentence in wanted:
+		tempDict = {}
+		tempDict["text"] = sentence["text"]
+		tempTones = {}
+		if len(sentence["tones"]) == 0:
+			tempTones["Neutral"] = 0
 		else:
-			ret.append("Neutral")
-			ret.append(0)
+			for tone in sentence["tones"]:
+				tempTones[tone["tone_name"]] = tone["score"]
+		tempDict["tones"] = tempTones
+		ret.append(tempDict)
 	return ret
-'''
 
-test = sentEmotion (urltext)
-for each in test:
-	print each
-
-
-'''
-
-
-
-
-'''
-
-#Creates the dict
-doc = mainEmotion(urltext)
-
-#Test print tones from emotions
-for each in doc['tones']:
-	print each
-for each in doc['scores']:
-	print each
-
-'''
+print sentEmotion(urltext)
