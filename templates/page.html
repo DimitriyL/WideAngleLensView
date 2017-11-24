@@ -3,13 +3,19 @@
   <head>
   </head>
   <body>
+    <!-- {{ articles }} -->
     {% for article in articles %}
-        <h1><!--<a href = "{{ article["webUrl"] }}">-->{{ article["title"] }}<!--</a>--></h1>
-        <!-- <h2>published at {{ article["webPublicationDate"] }}</h2> -->
-        {{ article["text"] }}
-        {% for feeling in article["emotion"]["tones"] %}
-          <h3>feelin' {{ feeling }} at {{ article["emotion"]["scores"][loop.index0] }}</h3>
+      {% for sentence in article %}
+        <h2>{{ sentence["text"] }}</h2>
+        {% for feeling in sentence["tones"] %}
+          <h4>
+              {{ feeling }} at 
+              <!-- score -->
+              {{ sentence["tones"][feeling] }}
+          </h4>
+          <br>
         {% endfor %}
+      {% endfor %}
     {% endfor %}
   </body>
 </html>

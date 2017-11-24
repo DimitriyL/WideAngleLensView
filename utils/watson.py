@@ -17,7 +17,7 @@ In recent days the UK’s standing in the world has further diminished as the im
 user=''
 passw=''
 
-with open('cred.csv') as csvDataFile:
+with open('utils/cred.csv') as csvDataFile:
     csvReader = csv.reader(csvDataFile)
     for row in csvReader:
         user = row[0]
@@ -61,6 +61,3 @@ def sentEmotion(url):
 		tempDict["tones"] = tempTones
 		ret.append(tempDict)
 	return ret
-
-# so you can see sendEmotion's structure
-print sentEmotion(urltext)
