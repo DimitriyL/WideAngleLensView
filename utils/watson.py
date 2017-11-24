@@ -62,4 +62,5 @@ def sentEmotion(url):
 		ret.append(tempDict)
 	return ret
 
+# so you can see sendEmotion's structure
 print sentEmotion(urltext)
