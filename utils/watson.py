@@ -47,21 +47,21 @@ def mainEmotion(url):
 	ret['scores'] = tonescore
 	return ret
 
-def sentEmotion(url):
 
+#gets emotions for each sent of the given list
+
+def sentEmotion(url):
 	ret =[]
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
 	wanted = content["sentences_tone"]
-	for sentence in wanted:
-		tempDict = {}
-		tempDict["text"] = sentence["text"]
-		tempTones = {}
-		if len(sentence["tones"]) == 0:
-			tempTones["Neutral"] = 0
+	for each in wanted:
+
+		ret.append(each['text'])
+		if len(each['tones'])==0:
+			ret.append('None')
+			ret.append(0)
 		else:
-			for tone in sentence["tones"]:
-				tempTones[tone["tone_name"]] = tone["score"]
-		tempDict["tones"] = tempTones
-		ret.append(tempDict)
+			ret.append(each['tones'][0]['tone_name'])
+			ret.append(each['tones'][0]['score'])
 	return ret
