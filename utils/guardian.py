@@ -34,5 +34,5 @@ def search(keyword):
    link = 'https://content.guardianapis.com/search?show-fields=bodyText&api-key=' + key + '&q=' + keyword
    return makeRequest(link, 'results')
 
-#print headlines()[0]
+print headlines()[0]['text']
 #print search('trump')[0]
