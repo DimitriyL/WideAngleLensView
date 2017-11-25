@@ -30,7 +30,7 @@ PRIMARY: LIST of DICTS
 title: STRING
 title tones: {tones: []}
 text: string
-text emotions: [sent, emotion, score]
+text emotions: [sent, emotion, score, ...]
 },...
 ]
 '''
