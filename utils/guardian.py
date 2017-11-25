@@ -26,13 +26,15 @@ def makeRequest(link, dictName):
    
 #return array of dictionary containing title and body of headline storys
 def headlines():
+   key="test"
    link = 'https://content.guardianapis.com/us?show-most-viewed=true&show-fields=bodyText&api-key=' + key
    return makeRequest(link, 'mostViewed')
 
 #return array of dictionary containing title and body of storys matching keyword
 def search(keyword):
+   key="test"
    link = 'https://content.guardianapis.com/search?show-fields=bodyText&api-key=' + key + '&q=' + keyword
    return makeRequest(link, 'results')
 
-print headlines()[0]['text']
+#print headlines()[0]['text']
 #print search('trump')[0]

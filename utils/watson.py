@@ -26,28 +26,31 @@ for row in csvReader:
    user = row[0]
    passw = row[1]
 
-def sanatizeText(text):
+def sanitizeText(text):
 	text.replace("&nbsp;"," ")
 	return text
 
 #ret value
 # ret['tones'], ret['scores']
 def mainEmotion(url):
-	url = sanatizeText(url)
+	url = sanitizeText(url)
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
+
 	ret ={}
 	tonenames = []
 	tonescore = []
 	for each in content['document_tone']['tones']:
+
 		tonenames.append(each['tone_name'])
 		tonescore.append(each['score'])
+
 	ret['tones']=tonenames
 	ret['scores'] = tonescore
 	return ret
 
 def sentEmotion(url):
-	url = sanatizeText(url)
+	url = sanitizeText(url)
 	ret =[]
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
