@@ -26,14 +26,12 @@ for row in csvReader:
    user = row[0]
    passw = row[1]
 
-def sanitizeText(text):
-	text.replace("&nbsp;"," ")
-	return text
+
 
 #ret value
 # ret['tones'], ret['scores']
 def mainEmotion(url):
-	url = sanitizeText(url)
+
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
 
@@ -50,7 +48,7 @@ def mainEmotion(url):
 	return ret
 
 def sentEmotion(url):
-	url = sanitizeText(url)
+
 	ret =[]
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
