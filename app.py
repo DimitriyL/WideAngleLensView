@@ -38,9 +38,12 @@ PRIMARY: LIST of DICTS
 '''
 def theGrandPizzah (arr):
 	masterList = []
+        #print arr
 	for each in arr:
+                #print each['title']
 		tempDict={}
 		tempDict['title'] = each['title']
+                #print watson.mainEmotion(each['title'])
 		tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
 		tempDict['text'] = each['text']
 		try:

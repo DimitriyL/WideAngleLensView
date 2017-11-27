@@ -23,8 +23,11 @@ else:
    csvDataFile = open('utils/cred.csv')
 csvReader = csv.reader(csvDataFile)
 for row in csvReader:
-   user = row[0]
-   passw = row[1]
+   if row[0] == 'watson':
+      user = row[1]
+      passw = row[2]
+#print user
+#print passw
 
 
 
@@ -34,10 +37,12 @@ def mainEmotion(url):
 
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
+        #print content
 
 	ret ={}
 	tonenames = []
 	tonescore = []
+       # print content
 	for each in content['document_tone']['tones']:
 
 		tonenames.append(each['tone_name'])
