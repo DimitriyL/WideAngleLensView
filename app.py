@@ -26,12 +26,13 @@ def addEmotionSent(arr):
 Return Type  
 PRIMARY: LIST of DICTS
 [
-{
-title: STRING
-title tones: {tones: []}
-text: string
-text emotions: [sent, emotion, score, ...]
-},...
+	{
+	title: STRING
+	title tones: {tones: []}
+	text: string
+	text emotions: [sent, emotion, score, ...]
+	},
+	...
 ]
 '''
 def theGrandPizzah (arr):

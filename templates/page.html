@@ -5,17 +5,10 @@
   <body>
     <!-- {{ articles }} -->
     {% for article in articles %}
-      {% for sentence in article %}
-        <h2>{{ sentence["text"] }}</h2>
-        {% for feeling in sentence["tones"] %}
-          <h4>
-              {{ feeling }} at 
-              <!-- score -->
-              {{ sentence["tones"][feeling] }}
-          </h4>
-          <br>
-        {% endfor %}
-      {% endfor %}
+      <h2>title: {{ article["title"] }}</h2>
+      <h2>title tones:</h2>{{ article["titleEmotions"] }}
+      <h2>title text:</h2>{{ article["text"] }}
+      <h2>text emotions:</h2>{{ article["textEmotion"] }}
     {% endfor %}
   </body>
 </html>
