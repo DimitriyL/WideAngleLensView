@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template
 import json, urllib2
 from utils import watson, guardian
@@ -39,16 +40,13 @@ def theGrandPizzah (arr):
 	masterList = []
 	for each in arr:
 		tempDict={}
-
+		tempDict['title'] = each['title']
+		tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
+		tempDict['text'] = each['text']
 		try:
-			tempDict['textSentEmotion'] = watson.sentEmotion(each['text'])
-			tempDict['textMainEmotion'] = watson.mainEmotion(each['text'])
-			tempDict['title'] = each['title']
-			tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
-
+			tempDict['textEmotion'] = watson.sentEmotion(each['text'])
 		except:
 			print "hmm"
- 
 		masterList.append(tempDict)
 
 	print masterList
