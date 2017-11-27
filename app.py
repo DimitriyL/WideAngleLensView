@@ -39,11 +39,13 @@ def theGrandPizzah (arr):
 	masterList = []
 	for each in arr:
 		tempDict={}
-		tempDict['title'] = each['title']
-		tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
-		tempDict['text'] = each['text']
+
 		try:
-			tempDict['textEmotion'] = watson.sentEmotion(each['text'])
+			tempDict['textSentEmotion'] = watson.sentEmotion(each['text'])
+			tempDict['textMainEmotion'] = watson.mainEmotion(each['text'])
+			tempDict['title'] = each['title']
+			tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
+			tempDict['text'] = each['text']
 		except:
 			print "hmm"
  
