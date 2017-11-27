@@ -45,7 +45,7 @@ def theGrandPizzah (arr):
 			tempDict['textMainEmotion'] = watson.mainEmotion(each['text'])
 			tempDict['title'] = each['title']
 			tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
-			tempDict['text'] = each['text']
+
 		except:
 			print "hmm"
  
