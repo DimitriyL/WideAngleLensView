@@ -36,6 +36,7 @@ PRIMARY: LIST of DICTS
 	...
 ]
 '''
+#masterList[0]['text'].encode('utf-8')
 def theGrandPizzah (arr):
 	masterList = []
         #print arr
