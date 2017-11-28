@@ -21,5 +21,6 @@
    * email_address,password
 ## REMEMBER: do NOT push the csv file with API keys and login credentials to the repo; leave it on your OWN computer
 7. Create a virtual environment, pip-install flask and requests, and then run app.py as so:
-  ``` $ python app.py
+  ```shell 
+  $ python app.py
   ```
