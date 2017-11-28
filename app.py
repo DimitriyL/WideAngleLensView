@@ -1,6 +1,6 @@
 
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json, urllib2, sys
 from utils import watson, guardian
 
@@ -92,12 +92,21 @@ def theGrandPizzah (arr):
 	return masterList
 
 articleList = theGrandPizzah(guardian.headlines())
-
 my_app = Flask(__name__)
 
-@my_app.route('/')
+@my_app.route('/', methods=['GET'])
 def root():
-    return render_template("page.html", articles = articleList)
+    #check query string to see if there has been a search
+    keyword = request.args.get('keyword')
+    #if query string is empty, display headlines
+    if keyword == None:
+        return render_template("page.html", articles = articleList)
+    #if query string is not empty, display articles containing query
+    searchArticleList = theGrandPizzah(guardian.search(keyword))
+    return render_template("page.html", articles = searchArticleList)
+    
+    
+
 
 if __name__ == "__main__":
     my_app.debug = True
