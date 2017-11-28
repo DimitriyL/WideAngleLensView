@@ -105,6 +105,14 @@ def root():
     searchArticleList = theGrandPizzah(guardian.search(keyword))
     return render_template("page.html", articles = searchArticleList)
     
+@my_app.route('/article' , methods=['GET', 'POST'])
+def article():
+	art = request.args['title']
+	sent = []
+	for each in articleList:
+		if each['title'] == art:
+			sent = each['textEmotion']
+	return render_template('article.html',sentences = sent, title= art)
     
 
 
