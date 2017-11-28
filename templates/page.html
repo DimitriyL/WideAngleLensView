@@ -5,10 +5,9 @@
   <body>
     <!-- {{ articles }} -->
     {% for article in articles %}
-      <h2>title: {{ article["title"] }}</h2>
-      <h2>title tones:</h2>{{ article["titleEmotions"] }}
-      <h2>title text:</h2>{{ article["text"] }}
-      <h2>text emotions:</h2>{{ article["textEmotion"] }}
+      <h2>Title: <a href = '/article?title={{article["title"]}}'> {{ article["title"] }}</a></h2>
+      <h2>Title Tones:</h2>{{ article["titleEmotions"] }}
+      <h2>Text Emotions:</h2>{{ article["textEmotion"] }}
     {% endfor %}
   </body>
 </html>
