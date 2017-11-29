@@ -18,7 +18,8 @@
    * Use [this page](https://console.bluemix.net/registration/?target=%2Fcatalog%2Fservices%2Ftone-analyzer%3FtaxonomyNavigation%3Dapps) to register your account
    * From there, you will be sent an email asking you to confirm your account
 6. In the CSV file, on the next line, type in your login info as such:
-   * email_address,password
+   * api_name,key,password
+   * api_name should be either watson or guardian
 ## REMEMBER: do NOT push the csv file with API keys and login credentials to the repo; leave it on your OWN computer
 7. Create a virtual environment, pip-install flask and requests, and then run app.py as so:
   ```shell 
