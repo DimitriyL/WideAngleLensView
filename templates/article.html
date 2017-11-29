@@ -12,22 +12,10 @@
   </head>
 
   <body style="background-color: goldenrod;">
-	<a href = "/"> Home </a>
+	<a href = "/"><h1><center> Guardian Text Analysis </center></h1></a>
 	<h3><center> {{title}} </center></h3>
 	<br>
 
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-      <input type="text" class="form-control" placeholder="Search for...">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-
-	<br><br>
 	<p>
 		{%for sent in sentences -%}
 				<i>{{sent['text']}}</i>
