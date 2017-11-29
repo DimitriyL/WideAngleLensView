@@ -25,6 +25,7 @@
   ```shell 
   $ python app.py
   ```
+8. The app will take a long time to run (maybe ~30 seconds). This is due to the nature of the large number of api calls being made. Please be patient!
 ## In the case of Mr. DW and ONLY Mr. DW using our project:
   * A csv file of keys and passwords has already been sent to you.
   * Simply copy this file into the "utils" directory, and that should render the project usable.
