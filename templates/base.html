@@ -38,19 +38,27 @@
     <table class="table table-hover">
       <thead>
 	<tr>
-          <th style="text-align: center;" width = "200">Link</th>
-          <th style="text-align: center;" width = "200">Tone</th>
+          <th style="text-align: center;" width = "200">Article</th>
+          <th style="text-align: center;" width = "200">Tones</th>
 	</tr>
       </thead>
       
       <tbody>
       {% for article in articles %}
       <tr>
-        <td><a href='/article?title={{article["title"]}}'> {{ article["title"] }}</a></td>
+        <td><a href='/article?title={{ article["title"] }}'> {{ article["title"] }}</a></td>
         <td>
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style='width: {{article["titleEmotions"]["scores"][0]}}%' aria-valuenow='{{article["titleEmotions"]["scores"][0]}}' aria-valuemin="0" aria-valuemax="100">{{ article["titleEmotions"]["scores"][0] }}: {{article["titleEmotions"]["tones"][0]}}</div>
-</div>
+
+  <!-- <div class="progress-bar" role="progressbar" style='width: {{ article["titleEmotions"]["scores"][0] }}%' aria-valuenow='{{ article["titleEmotions"]["scores"][0] }}' aria-valuemin="0" aria-valuemax="100">{{article["titleEmotions"]["tones"][0]}}: {{ article["titleEmotions"]["scores"][0] }}</div> -->
+  
+  {% for score in article["titleEmotions"]["scores"] %}
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style='width: {{ score }}%' aria-valuenow='{{ score }}' aria-valuemin="0" aria-valuemax="100">{{ article["titleEmotions"]["tones"][loop.index0] }}: {{ score }}</div>
+    </div>
+    <br>
+  {% endfor %}
+  
+
         </td>
       </tr>
       {% endfor %}

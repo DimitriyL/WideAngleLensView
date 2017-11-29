@@ -38,9 +38,10 @@ def theGrandPizzah (arr):
 	    tempDict['textEmotion'] = watson.sentEmotion(each['text'])
        	    tempDict['title'] = each['title']
 	    tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
-            print tempDict['titleEmotions']['scores'][0]
-            tempDict['titleEmotions']['scores'][0] *= 100
-            print tempDict['titleEmotions']['scores'][0]
+            for i in range(len(tempDict['titleEmotions']['scores'])):
+                print tempDict['titleEmotions']['scores'][i]
+                tempDict['titleEmotions']['scores'][i] *= 100
+                print tempDict['titleEmotions']['scores'][i]
 	    masterList.append(tempDict)
 	except:
 	    print "Nice!"

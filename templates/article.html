@@ -31,14 +31,9 @@
 	<p>
 		{%for sent in sentences -%}
 				<i>{{sent['text']}}</i>
-				<br>
-				<br>
-				Tone: {{sent['tone']}}
-				<br><br>
-				Score: 
 				<br><br>
 				<div class="progress">
-				  <div class="progress-bar bg-warning" role="progressbar" style='width: {{sent["precent"]}}%' aria-valuenow='{{sent["precent"]}}' aria-valuemin="0" aria-valuemax="100">{{ sent["precent"] }}</div>
+				  <div class="progress-bar bg-warning" role="progressbar" style='width: {{ sent["precent"] }}%' aria-valuenow='{{ sent["precent"] }}' aria-valuemin="0" aria-valuemax="100">{{sent['tone']}}: {{ sent["precent"] }}</div>
 				</div>
 				<br><br><br>
 		{%- endfor %}
