@@ -7,8 +7,8 @@ else:
    csvDataFile = open('utils/cred.csv')
 csvReader = csv.reader(csvDataFile)
 for row in csvReader:
-   if row[1] == "NULL":
-      key = row[0]
+   if row[0] == "guardian":
+      key = row[1]
 #print key
           
 #helper method

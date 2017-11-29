@@ -23,8 +23,11 @@ else:
    csvDataFile = open('utils/cred.csv')
 csvReader = csv.reader(csvDataFile)
 for row in csvReader:
-   user = row[0]
-   passw = row[1]
+   if row[0] == 'watson':
+      user = row[1]
+      passw = row[2]
+#print user
+#print passw
 
 
 
@@ -34,10 +37,12 @@ def mainEmotion(url):
 
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
+        #print content
 
 	ret ={}
 	tonenames = []
 	tonescore = []
+       # print content
 	for each in content['document_tone']['tones']:
 
 		tonenames.append(each['tone_name'])
@@ -52,16 +57,21 @@ def mainEmotion(url):
 
 def sentEmotion(url):
 	ret =[]
+
 	content = requests.get(link+url, auth=HTTPBasicAuth(user, passw))
 	content = content.json()
 	wanted = content["sentences_tone"]
 	for each in wanted:
-
-		ret.append(each['text'])
+		tempDict = {}
+		tempDict['text']=each['text']
 		if len(each['tones'])==0:
-			ret.append('None')
-			ret.append(0)
+			tempDict['tone'] = 'None'
+			tempDict['score'] = 0
+			tempDict['precent'] = 0
+
 		else:
-			ret.append(each['tones'][0]['tone_name'])
-			ret.append(each['tones'][0]['score'])
+			tempDict['tone'] = each['tones'][0]['tone_name']
+			tempDict['score'] = each['tones'][0]['score']
+			tempDict['precent'] = each['tones'][0]['score']*100
+		ret.append(tempDict)
 	return ret
