@@ -12,15 +12,15 @@ pd 8
 2017-11-21
 --------------------------------------------------------------
 CJ- <23:11> Started guardian.py
-DL- <>
-EL- <6:00pm> Wrote skeleton for watson; set up pass csv
-YK- <13:43> Have the API's in the python files.
+DL- <1:30> Began working on framework and front-end code
+EL- <18:00> Wrote skeleton for watson; set up pass csv
+YK- <13:43> Have the API's in the python files
 ==============================================================
 2017-11-22
 --------------------------------------------------------------
 CJ- <22:45> Finished guardian.py
-DL- <>
-EL- <7:00pm> Testing watson; wrote function to get sent emo
+DL- <1:45> Figured out how to implement progress bars and tables in Foundation
+EL- <19:00> Testing watson; wrote function to get sent emo
 YK- <00:02> got it to display article titles' emotions (I don't know why it can't do whole texts of articles; errors)
 ==============================================================
 2017-11-23
@@ -35,27 +35,27 @@ YK- <>
 CJ- <>
 DL- <>
 EL- <>
-YK- <14:13> unicode in article text was cleaned up by someone (Eric please do devlog) else so I could get Watson to run the articles
+YK- <14:13> Unicode in article text was cleaned up by someone else so I could get Watson to run the articles
 ==============================================================
 2017-11-25
 --------------------------------------------------------------
 CJ- <>
-DL- <>
-EL- <9:00pm>	Rewrote most of app.py to make the main function; 
-				added some comments; minor changes
+DL- <20:00> Added jinja code to the original HTML, but did not push yet
+EL- <21:00> Rewrote most of app.py to make the main function; added some comments; minor changes
 YK- <>
 ==============================================================
 2017-11-26
 --------------------------------------------------------------
-CJ- <18:50> fixed issue with not using correct keys for each API
-DL- <>
+CJ- <18:50> Fixed issue with not using correct keys for each API
+DL- <17:05> Finally added HTML files to the repo with Foundation framework
 EL- <>
 YK- <>
 ==============================================================
 2017-11-27
 --------------------------------------------------------------
 CJ- <20:00> fixed search bar
-DL- <>
+DL- <in class> Linked jinja code to the produced list of articles, allowing frontend and backend to correspond
+	<21:30> Updated README multiple times, and attempted to fix problems with Foundation framework, but could not
 EL- <in class>	Added unicode fix; testing the main list; minor fixes
 	<4:15pm> Bug fixing why watson wasn't working
 YK- <>
@@ -63,7 +63,7 @@ YK- <>
 2017-11-28
 --------------------------------------------------------------
 CJ- <22:37> allowed searched articles to be viewed, cleaned up devlog
-DL- <>
+DL- <11:55> Finished README and completely revamped framework into Bootstrap, allowing the project to finally show up in style
 EL- <in class>	Deleted useless files and worked on the article 
 				jinja/flask
 	<4:30pm>	Ditto
