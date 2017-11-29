@@ -1,8 +1,8 @@
-
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request
 import json, urllib2, sys
 from utils import watson, guardian
+from flask_zurb_foundation import Foundation
 
 # object = urllib2.urlopen("https://content.guardianapis.com/search?api-key=b108bad9-9e7b-4afb-829b-1a9a19aef420")
 # string = object.read()
@@ -83,6 +83,9 @@ def theGrandPizzah (arr):
 			tempDict['textEmotion'] = watson.sentEmotion(each['text'])
 			tempDict['title'] = each['title']
 			tempDict['titleEmotions'] = checkNullDict(watson.mainEmotion(each['title']))
+                        print tempDict['titleEmotions']['scores'][0]
+                        tempDict['titleEmotions']['scores'][0] *= 100
+                        print tempDict['titleEmotions']['scores'][0]
 			masterList.append(tempDict)
 		except:
 			print "Nice!"
@@ -92,7 +95,10 @@ def theGrandPizzah (arr):
 	return masterList
 
 articleList = theGrandPizzah(guardian.headlines())
+#print articleList["titleEmotions"]["scores"][0]
 my_app = Flask(__name__)
+
+Foundation(my_app)
 
 @my_app.route('/', methods=['GET'])
 def root():
@@ -100,10 +106,10 @@ def root():
     keyword = request.args.get('keyword')
     #if query string is empty, display headlines
     if keyword == None:
-        return render_template("page.html", articles = articleList)
+        return render_template("base.html", articles = articleList)
     #if query string is not empty, display articles containing query
     searchArticleList = theGrandPizzah(guardian.search(keyword))
-    return render_template("page.html", articles = searchArticleList)
+    return render_template("base.html", articles = searchArticleList)
     
 @my_app.route('/article' , methods=['GET', 'POST'])
 def article():
